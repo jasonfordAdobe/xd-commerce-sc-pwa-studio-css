@@ -16,3 +16,4 @@ It's not intended to build a PWA from XD! Don't have your expectations too high!
 
 * Font output
 * Script to create the correct override files automatically in PWA Studio
+* Test....a lot
