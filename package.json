@@ -1,6 +1,6 @@
 {
   "name": "my-first-xd-plugin",
-  "version": "1.0.0",
+  "version": "0.0.2",
   "main": "src/main.js",
   "author": "Jason Ford",
   "license": "MIT",

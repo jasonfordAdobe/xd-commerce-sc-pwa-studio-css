@@ -2,6 +2,8 @@ const React = require('react');
 
 const styles = require('./App.css');
 
+const { alert, error } = require("@adobe/xd-plugin-toolkit/lib/dialogs");
+
 const ColourCheckerList = require('./components/ColourCheckerList.jsx');
 const GenerateCSSButton = require('./components/GenerateCSSButton.jsx');
 
@@ -22,6 +24,17 @@ class App extends React.Component {
 
     render() {
         const { selection } = this.props;
+
+        async function alertClipboardCopy() {
+            await alert("Copied to Clipboard",
+            "Command is in the clipboard, run it in the PWA root directory.");
+        }
+
+        function pwaUpgradeCmd() {
+            let clipboard = require("clipboard");
+            clipboard.copyText('curl -sS https://raw.githubusercontent.com/jasonfordAdobe/xd-commerce-sc-pwa-studio-css/main/supporting-scripts/updatepwa.sh | bash');
+            alertClipboardCopy();
+        }
         
         return (
             <panel className={styles.panel}>
@@ -34,6 +47,7 @@ class App extends React.Component {
                 <hr/>
                 <h2>Step 2 - Extend the base styles</h2>
                 <p>Run this command in terminal from within your PWA Studio root folder.</p>
+                <button onClick={pwaUpgradeCmd}>Copy Command</button>
                 <hr/>
                 <h2>Step 3 - Generate CSS</h2>
                 <p>This button will take the colours you've chosen in XD and generate CSS that can be copied into the tokens.module.css file in your PWA.</p>
